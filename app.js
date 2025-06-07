@@ -22,8 +22,8 @@ app.post('/encrypt', (req, res) => {
         // Get User-Agent from headers
         const userAgent = req.headers['user-agent'];
 
-        // Generate risk data
-        const riskData = generate_risk_data(userAgent);
+        // Generate risk data and get deviceFingerprint
+        const { riskDataForPayload, deviceFingerprint } = generate_risk_data(userAgent);
 
         const encryptedResult = encryptCardData(
             card,
@@ -35,10 +35,14 @@ app.post('/encrypt', (req, res) => {
             domain,
             version 
         );
-        // Include both encryptedData and riskData in the response
-        res.json({ encryptedData: encryptedResult, riskData: riskData }); 
+        // Include encryptedData, riskData (which is riskDataForPayload), and deviceFingerprint in the response
+        res.json({ 
+            encryptedData: encryptedResult, 
+            riskData: riskDataForPayload, // Use the structured risk data
+            deviceFingerprint: deviceFingerprint // Add the raw deviceFingerprint
+        }); 
     } catch (error) {
-        console.error("Processing error:", error); // Changed log message for clarity
+        console.error("Processing error:", error); 
         res.status(500).json({ error: 'Failed to process request.', details: error.message });
     }
 });

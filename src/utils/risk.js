@@ -162,13 +162,17 @@ function generate_risk_data(user_agent = null) {
         }
     };
 
-    const risk_data = {
+    const risk_data_payload = { // Renamed to avoid confusion
         "riskData": {
             "clientData": btoa(JSON.stringify(client_data_obj)),
         }
     };
 
-    return risk_data;
+    // Return both the risk_data_payload and the raw deviceFingerprint
+    return {
+        riskDataForPayload: risk_data_payload,
+        deviceFingerprint: client_data_obj.deviceFingerprint 
+    };
 }
 
 if (typeof window === 'undefined') {
