@@ -64,7 +64,6 @@ app.post('/encrypt', (req, res) => {
             language: clientData.components.language || "en-US",
             screenHeight: clientData.components.screenHeight || 800,
             screenWidth: clientData.components.screenWidth || 1280,
-            userAgent: userAgent,
             timeZoneOffset: clientData.components.timezoneOffset || -420
         };
 

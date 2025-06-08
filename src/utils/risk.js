@@ -43,16 +43,14 @@ function generate_risk_data(user_agent = null) {
     const [screen_width, screen_height, avail_width, avail_height] = random_choice(screen_resolutions);
 
     const timezone_options = [
-        [-300, "America/New_York"],
-        [-360, "America/Chicago"],
-        [-420, "America/Denver"],
-        [-480, "America/Los_Angeles"],
-        [-540, "America/Anchorage"],
-        [-420, "America/Phoenix"],
-        [-600, "America/Honolulu"],
-        [-360, "America/Guatemala"],
-        [-300, "America/Toronto"],
-        [-240, "America/Puerto_Rico"],
+        [-300, "America/New_York"],      // Eastern Time
+        [-360, "America/Chicago"],       // Central Time
+        [-420, "America/Denver"],        // Mountain Time
+        [-480, "America/Los_Angeles"],   // Pacific Time
+        [-540, "America/Anchorage"],     // Alaska Time
+        [-420, "America/Phoenix"],       // Arizona Time (no DST)
+        [-600, "America/Honolulu"],      // Hawaii Time
+        [-240, "America/Puerto_Rico"]    // Puerto Rico (US territory)
     ];
 
     const [tz_offset, tz_name] = random_choice(timezone_options);
