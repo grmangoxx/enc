@@ -3,7 +3,7 @@ const encryptCardData = require('./src/encrypt');
 const { generate_risk_data } = require('./src/utils/risk'); // Import generate_risk_data
 
 const app = express();
-const port = 3000; // You can choose any port
+const port = 3001; // You can choose any port
 
 // Middleware to parse JSON bodies
 app.use(express.json());
